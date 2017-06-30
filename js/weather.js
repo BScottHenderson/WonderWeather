@@ -44,7 +44,7 @@ function getWeather (queryString) {
   };
 
   // callback for when there's an error
-  request.error = function (err) {
+  request.onerror = function (err) {
   	console.log(err);
   };
 

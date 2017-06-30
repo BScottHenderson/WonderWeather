@@ -1,28 +1,13 @@
 
 const apiURL = 'http://api.openweathermap.org/data/2.5/weather';
+// To make the unsecurity (http instead of https) OpenWeather API URL work
+// via GitHub Pages we use the CORS API link to "trick" GitHub into thinking
+// we're using a secure API.  So the API URL we'll really use is:
+const apiURL = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather';
 
 /*
-
-https://cors-anywhere.herokuapp.com/
-
-http://openweathermap.org/appid
-
 &appid=b64c4de3217bb9707c37288cfcfb6f69
-
-api.openweathermap.org/data/2.5/weather?lat=35&lon=139
-
-Homework
-● Create a website featuring two buttons labeled Seattle and London
-● When clicked, fire an xmlHttpRequests that fetches the current
-conditions for the city, based on latitude and longitude
-● london: { lat: 51.5074, lon: 0.1278},
-seattle: { lat: 47.6762, lon: -122.3182 }
-● Use the response JSON data to write weather information to the
-DOM
 ● API Docs are here: http://openweathermap.org/current
-
-http://openweathermap.org/current
-
 */
 
 function handleClick () {

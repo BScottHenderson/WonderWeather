@@ -1,5 +1,5 @@
 
-const apiURL = 'http://api.openweathermap.org/data/2.5/weather';
+//const apiURL = 'http://api.openweathermap.org/data/2.5/weather';
 // To make the unsecurity (http instead of https) OpenWeather API URL work
 // via GitHub Pages we use the CORS API link to "trick" GitHub into thinking
 // we're using a secure API.  So the API URL we'll really use is:

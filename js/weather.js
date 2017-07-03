@@ -1,62 +1,104 @@
 
-//const apiURL = 'http://api.openweathermap.org/data/2.5/weather';
-// To make the unsecurity (http instead of https) OpenWeather API URL work
+// OpenWeather API
+//const OpenWeatherAPIURL = 'http://api.openweathermap.org/data/2.5/weather';
+// To make the unsecure (http instead of https) OpenWeather API URL work
 // via GitHub Pages we use the CORS API link to "trick" GitHub into thinking
 // we're using a secure API.  So the API URL we'll really use is:
-const apiURL = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather';
+const OpenWeatherAPIURL = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather';
+const OpenWeatherAPIKey = 'b64c4de3217bb9707c37288cfcfb6f69'; // This should not be visible in a public GitHub repo.
 
 /*
-&appid=b64c4de3217bb9707c37288cfcfb6f69
-● API Docs are here: http://openweathermap.org/current
+API Docs are here: http://openweathermap.org/current
+
+use snow animation
+create a version for rain
+what about wind? clouds w/wind?
+sunshine?
+partly/mostly cloudy?
+
 */
 
-function handleClick () {
+// Call the weather API to update the current weather at
+// the specified location.
+function getWeatherLoc (latitude, longitude) {
   event.preventDefault();
 
-  // construct the request URL using the base API URL and input from the user
-  let button = event.srcElement;
-  //console.log(button.name);
-  let values = {
-    lat: button.name === 'london' ? 51.5074 : 47.6762,
-    lon: button.name === 'london' ? 0.1278 : -122.3182,
-    appid: 'b64c4de3217bb9707c37288cfcfb6f69'
-  };
-  let queryString = queryBuilder(values);
+  // Construct location object.
+  let loc = {
+    lat: latitude || 0.0,
+    lon: longitude || 90.0,
+  }
 
-  getWeather(queryString);
+  // Call the weather API.
+  updateWeather(loc);
 }
 
-function getWeather (queryString) {
-  // create a new request object
+// Call the weather API to update the current weather at
+// the current location as reported by the browser.
+function getWeatherCurrentLoc() {
+  event.preventDefault();
+
+  if (!('geolocation' in navigator)) {
+    alert('Your browser does not support geolocation.');
+    return;
+  }
+
+  let geo_success = function(position) {
+    // Construct location object.
+    let loc = {
+      lat: position.coords.latitude,
+      lon: position.coords.longitude
+    }
+
+    // Call the weather API.
+    updateWeather(loc);
+  };
+  let geo_error = function(error) {
+    alert(`ERROR(${error.code}): ${error.message}`);
+  };
+
+  navigator.geolocation.getCurrentPosition(geo_success, geo_error);
+}
+
+// Update the weather using data in the specified query string.
+function updateWeather (loc) {
   let request = new XMLHttpRequest();
 
-  // open the connection:
-  //   request method, url, (optional) asych flag, asych by default
-  request.open('GET', apiURL + queryString, true);
+  // Build the query string.
+  let values = loc;
+  values.appid = OpenWeatherAPIKey;
+  let queryString = queryBuilder(values);
 
-  // callback for when the request completes
+  // Open the connection:
+  //   request method, url, (optional) asych flag, asych by default
+  request.open('GET', OpenWeatherAPIURL + queryString, true);
+
+  // Callback for successfull request completion.
   request.onload = function () {
     let response = JSON.parse(request.response);
     let weatherDiv = document.querySelector('#weather');
 
-    //console.log(response);
+    console.log(response);
     weatherDiv.innerHTML = response.weather[0].main;
+
+    // Also display the location.
+    updateLocation(loc);
   };
 
-  // callback for when there's an error
-  request.onerror = function (err) {
-  	console.log(err);
+  // Callback for errors.
+  request.onerror = function (error) {
+    alert(`ERROR(${error.code}): ${error.message}`);
   };
 
-  // send the request to the API server
+  // Send the request to the API server
   request.send();
 }
 
-// Convert (key,value) pairs to a query string.
+// Convert (key,value) pairs to a URL query string.
 function queryBuilder (queryObj) {
-  // assume queryObj is (key,value) pairs
+  // Assume queryObj is (key,value) pairs and is enumerable.
   // concatenate the pairs "key=value" using '&' to join
-  // return the string (prepend '?')
+  // Return the string with '?' prepended.
   let keyValueStrings = [];
 
   for (let key in queryObj) {
@@ -71,6 +113,7 @@ function queryBuilder (queryObj) {
   return queryString;
 }
 
+// Is the given 'data' in JSON format?
 function isJSON(data) {
   data = typeof data !== "string"
     ? JSON.stringify(data)

@@ -5,16 +5,17 @@
     <title>I Wonder Weather?</title>
   </head>
   <body>
-    <div>
+    <button name='seattle' onclick='getWeatherLoc(47.6762, -122.3182);'>Seattle</button>
+    <button name='london' onclick='getWeatherLoc(51.5074, 0.1278);'>London</button>
+    <button name='current' onclick='getWeatherCurrentLoc();'>Current Location</button>
+
+    <section id='weather-section' style='visibility: hidden'>
       Weather for:
       <div id='location'></div>
       is:
       <div id='weather'></div>
-    </div>
-
-    <button name='seattle' onclick='getWeatherLoc(47.6762, -122.3182);'>Seattle</button>
-    <button name='london' onclick='getWeatherLoc(51.5074, 0.1278);'>London</button>
-    <button name='current' onclick='getWeatherCurrentLoc();'>Current Location</button>
+      <img id='weather-icon' src='img/empty.png' alt='weather icon' />
+    </section>
 
     <script type='text/javascript' src='js/weather.js'></script>
     <script type='text/javascript' src='js/mapping.js'></script>

@@ -83,7 +83,7 @@ function updateWeather (loc) {
     let weatherIcon    = document.querySelector('#weather-icon');
 
     console.log(response);
-    weatherSection.style = 'visibility: visible';
+    weatherSection.style.visibility = 'visible';
     weatherDiv.innerHTML =
       `Temperature: ${Math.round(KelvinToFahrenheit(response.main.temp))}°F<br />` +
       `Humidity: ${response.main.humidity}%<br />` +

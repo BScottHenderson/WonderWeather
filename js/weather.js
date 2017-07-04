@@ -16,6 +16,8 @@ what about wind? clouds w/wind?
 sunshine?
 partly/mostly cloudy?
 
+display mini-map of lat/long -> google maps api?
+
 */
 
 // Call the weather API to update the current weather at
@@ -76,10 +78,17 @@ function updateWeather (loc) {
   // Callback for successfull request completion.
   request.onload = function () {
     let response = JSON.parse(request.response);
-    let weatherDiv = document.querySelector('#weather');
+    let weatherSection = document.querySelector('#weather-section');
+    let weatherDiv     = document.querySelector('#weather');
+    let weatherIcon    = document.querySelector('#weather-icon');
 
     console.log(response);
-    weatherDiv.innerHTML = response.weather[0].main;
+    weatherSection.style = 'visibility: visible';
+    weatherDiv.innerHTML =
+      `Temperature: ${Math.round(KelvinToFahrenheit(response.main.temp))}°F<br />` +
+      `Humidity: ${response.main.humidity}%<br />` +
+      `Condition: ${response.weather[0].main}`;
+    weatherIcon.src = `http://openweathermap.org/img/w/${response.weather[0].icon}.png`
 
     // Also display the location.
     updateLocation(loc);
@@ -130,4 +139,19 @@ function isJSON(data) {
   }
 
   return false;
+}
+
+// Convert temperature from Kelvin to Fahrenheit
+function KelvinToFahrenheit (degreesK) {
+  return CelsiusToFahrenheit(KelvinToCelsius(degreesK));
+}
+
+// Convert temperature from Kelvin to Celsius
+function KelvinToCelsius (degreesK) {
+  return degreesK - 273.15;
+}
+
+// Convert temperature from Celsius to Fahrenheit
+function CelsiusToFahrenheit (degreesC) {
+  return (degreesC * 5.0/9.0) + 32.0;
 }

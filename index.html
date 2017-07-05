@@ -2,19 +2,28 @@
 <html lang='en'>
   <head>
     <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>I Wonder Weather?</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+
+    <link rel="stylesheet" href="css/weather.css">
+    <link rel="stylesheet" href="css/weather-animation.css">
   </head>
   <body>
     <button name='seattle' onclick='getWeatherLoc(47.6762, -122.3182);'>Seattle</button>
     <button name='london' onclick='getWeatherLoc(51.5074, 0.1278);'>London</button>
     <button name='current' onclick='getWeatherCurrentLoc();'>Current Location</button>
 
-    <section id='weather-section' style='visibility: hidden'>
+    <section class='weather' style='visibility: hidden'>
       Weather for:
       <div id='location'></div>
-      is:
-      <div id='weather'></div>
+      <div id='weather-info'></div>
       <img id='weather-icon' src='img/empty.png' alt='weather icon' />
+      <div class='weather-animation-container'>
+        <div class='weather-animation'></div>
+      </div>
     </section>
 
     <script type='text/javascript' src='js/weather.js'></script>

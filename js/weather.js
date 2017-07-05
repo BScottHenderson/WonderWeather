@@ -78,17 +78,36 @@ function updateWeather (loc) {
   // Callback for successfull request completion.
   request.onload = function () {
     let response = JSON.parse(request.response);
-    let weatherSection = document.querySelector('#weather-section');
-    let weatherDiv     = document.querySelector('#weather');
-    let weatherIcon    = document.querySelector('#weather-icon');
+    let weatherSection   = document.querySelector('section.weather');
+    let weatherInfo      = document.querySelector('#weather-info');
+    let weatherIcon      = document.querySelector('#weather-icon');
+    let weatherAnimation = document.querySelector('.weather-animation');
 
     console.log(response);
+
+    // Make the weather section visible.
     weatherSection.style.visibility = 'visible';
-    weatherDiv.innerHTML =
+
+    // Set weather info and icon.
+    weatherInfo.innerHTML =
       `Temperature: ${Math.round(KelvinToFahrenheit(response.main.temp))}°F<br />` +
-      `Humidity: ${response.main.humidity}%<br />` +
-      `Condition: ${response.weather[0].main}`;
+      `Humidity: ${response.main.humidity}%`;
     weatherIcon.src = `http://openweathermap.org/img/w/${response.weather[0].icon}.png`
+
+    // Set weather animation.
+    let condition = response.weather[0].main;
+    weatherAnimation.innerHTML = condition;
+    let weatherAnimationClassNames = ['weather-animation'];
+    weatherAnimationClassNames.push('snow');
+
+    // if (condition.match(/rain/i)) {
+    //   weatherAnimationClassNames.push('rain');
+    // } else if (condition.match(/snow/i)) {
+    //   weatherAnimationClassNames.push('snow');
+    // } else if (condition.match(/cloud/i)) {
+    //     weatherAnimationClassNames.push('clouds');
+    // } // else clear -> display sunny weather? blue sky
+    weatherAnimation.className = weatherAnimationClassNames.join(' ');
 
     // Also display the location.
     updateLocation(loc);

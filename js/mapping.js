@@ -62,5 +62,5 @@ function formattedLatLong(latitude, longitude) {
   let northSouth = latitude  > 0 ? 'N' : 'S';
   let eastWest   = longitude > 0 ? 'W' : 'E';
 
-  return `(${Math.abs(latitude)}° ${northSouth}, ${Math.abs(longitude)}° ${eastWest})`;
+  return `(${Math.abs(latitude.toFixed(4))}° ${northSouth}, ${Math.abs(longitude.toFixed(4))}° ${eastWest})`;
 }

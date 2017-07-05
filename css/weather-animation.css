@@ -1,0 +1,250 @@
+
+.weather-animation-container {
+  color: black;
+  background: gray;
+}
+
+.weather-animation {
+	display: flex;
+	justify-content: center;
+	font-size: 3rem;
+	text-transform: uppercase;
+	letter-spacing: 2rem;
+	padding: 1rem;
+}
+
+/**************** SNOW! ****************/
+
+.snow {
+	background: none;
+	font-family: Androgyne, sans-serif;
+	background-image: url('http://www.wearewebstars.dk/codepen/img/s1.png'), url('http://www.wearewebstars.dk/codepen/img/s2.png'), url('http://www.wearewebstars.dk/codepen/img/s3.png');
+	/* snow only in the container with the class "snow" *not* the entire page
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	*/
+	z-index: 1;
+	animation: snow 10s linear infinite;
+}
+
+@keyframes snow {
+  0% {background-position: 0 0, 0 0, 0 0;}
+  50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+
+
+/* slow rain
+html {
+  height: 100%;
+}
+
+body {
+  background: #222222;
+  box-shadow: inset 0 0 400px #111111;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.rain {
+  background: white;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
+  height: 50px;
+  position: absolute;
+  width: 1px;
+}
+
+$rain: 150;
+
+@for $i from 1 through $rain {
+  $top: (random(50) + 50) * 1%;
+  $left: random(100) * 1%;
+  $opacity: (random(30) + 30) * 0.01;
+  $delay: random(20) - 1s;
+
+  .rain:nth-of-type(#{$i}) {
+    animation-name: rain-#{$i};
+    animation-delay: $delay;
+    animation-duration: random(6) + 4s;
+    animation-iteration-count: infinite;
+    left: $left;
+    opacity: $opacity;
+    top: -$top;
+  }
+
+  @keyframes rain-#{$i} {
+    0% {
+      left: $left;
+      opacity: $opacity;
+      top: -$top;
+    }
+    100% {
+      opacity: 0;
+      top: $top + 40%;
+    }
+  }
+}
+*/
+
+/* fast rain
+html{height:100%;}
+body {
+background:#0D343A;
+background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(#000000)  );
+background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(0,0,0,1) 100%);
+
+overflow:hidden;}
+
+
+.drop {
+  background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(rgba(255,255,255,0.6))  );
+  background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
+	width:1px;
+	height:89px;
+	position: absolute;
+	bottom:200px;
+	-webkit-animation: fall .63s linear infinite;
+  -moz-animation: fall .63s linear infinite;
+
+}
+
+/* animate the drops*//*
+@keyframes fall {
+	to {margin-top:900px;}
+}
+*/
+
+
+/**************** CLOUDS ****************/
+
+.sky {
+  background: #007fd5;
+  /*position: relative;
+	height: 480px;*/
+  overflow: hidden;
+	animation: sky-background 50s ease-out infinite;
+	transform: translate3d(0, 0, 0);
+}
+
+.moon {
+  background: url("http://i.imgur.com/wFXd68N.png");
+  /*position: absolute;
+  height: 300%;
+  width: 300%;
+	left: 0;*/
+	animation: sky-background 50s ease-out infinite;
+	transform: translate3d(0, 0, 0);
+}
+
+.clouds-one {
+  background: url("http://www.scri8e.com/stars/PNG_Clouds/zc06.png?filename=./zc06.png&w0=800&h0s=289&imgType=3&h1=50&w1=140");
+  /*position: absolute;
+  height: 100%;
+  width: 300%;
+	left: 0;
+  top: 0;*/
+	animation: sky-background 50s ease-out infinite;
+	transform: translate3d(0, 0, 0);
+}
+
+.clouds-two {
+  background: url("http://freepngimages.com/wp-content/uploads/2016/02/clouds-transparent-background-2.png");
+  /*position: absolute;
+	height: 100%;
+  width: 300%;
+  left: 0;
+  top: 0;*/
+	animation: sky-background 50s ease-out infinite;
+	transform: translate3d(0, 0, 0);
+}
+
+.clouds-three {
+  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_three.png");
+  /*position: absolute;
+  height: 100%;
+  width: 300%;
+	left: 0;
+  top: 0;*/
+	animation: sky-background 50s ease-out infinite;
+	transform: translate3d(0, 0, 0);
+}
+
+@keyframes sky_background {
+  0% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  50% {
+    background: #000;
+    color: #a3d9ff
+  }
+  100% {
+    background: #007fd5;
+    color: #007fd5
+  }
+}
+
+@keyframes moon {
+  0% {
+    opacity: 0;
+    left: -200%;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    left: 0;
+		bottom: 250px;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    bottom: 500px;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes cloud-one {
+  0% {
+    left: 0
+  }
+  100% {
+    left: -200%
+  }
+}
+
+@keyframes cloud-two {
+  0% {
+    left: 0
+  }
+  100% {
+    left: -200%
+  }
+}
+
+@keyframes cloud-three {
+  0% {
+    left: 0
+  }
+  100% {
+    left: -200%
+  }
+}
+
+@keyframes sky-background {
+  0% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  50% {
+    background: #000;
+    color: #a3d9ff
+  }
+  100% {
+    background: #007fd5;
+    color: #007fd5
+  }
+}

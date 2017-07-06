@@ -17,7 +17,7 @@ sunshine?
 partly/mostly cloudy?
 
 display mini-map of lat/long -> google maps api?
-
+@everyone Weather API fun 2 - wind.deg could be used with CSS to create an arrow that shows wind direction.
 */
 
 // Call the weather API to update the current weather at
@@ -98,15 +98,16 @@ function updateWeather (loc) {
     let condition = response.weather[0].main;
     weatherAnimation.innerHTML = condition;
     let weatherAnimationClassNames = ['weather-animation'];
-    weatherAnimationClassNames.push('snow');
 
-    // if (condition.match(/rain/i)) {
-    //   weatherAnimationClassNames.push('rain');
-    // } else if (condition.match(/snow/i)) {
-    //   weatherAnimationClassNames.push('snow');
-    // } else if (condition.match(/cloud/i)) {
-    //     weatherAnimationClassNames.push('clouds');
-    // } // else clear -> display sunny weather? blue sky
+    if (condition.match(/rain/i)) {
+      weatherAnimationClassNames.push('clouds-one');
+    } else if (condition.match(/snow/i)) {
+      weatherAnimationClassNames.push('snow');
+    } else if (condition.match(/cloud/i)) {
+      weatherAnimationClassNames.push('clouds-one');
+    } else {
+      weatherAnimationClassNames.push('sky');
+    }
     weatherAnimation.className = weatherAnimationClassNames.join(' ');
 
     // Also display the location.

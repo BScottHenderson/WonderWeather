@@ -40,7 +40,7 @@ function getWeatherLoc (latitude, longitude) {
 function getWeatherCurrentLoc() {
   event.preventDefault();
 
-  if (!('geolocation' in navigator)) {
+  if (!Modernizr.geolocation) {
     alert('Your browser does not support geolocation.');
     return;
   }

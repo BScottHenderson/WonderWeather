@@ -3,13 +3,12 @@ body {
   font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
   color: black;
   background: white;
-  padding-top: 1rem;
-}
+  padding-top: 1rem; }
 
 img {
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 .weather {
-  margin: 1rem;
-}
+  margin: 1rem; }
+
+/*# sourceMappingURL=weather.css.map */

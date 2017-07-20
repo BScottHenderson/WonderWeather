@@ -11,4 +11,11 @@ img {
 .weather {
   margin: 1rem; }
 
+.weather-button {
+  margin: 1rem;
+  padding: 1rem; }
+  .weather-button:hover, .weather-button:active, .weather-button:focus {
+    border: 0.25rem dashed green;
+    outline: none; }
+
 /*# sourceMappingURL=weather.css.map */

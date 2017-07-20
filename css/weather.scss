@@ -5,7 +5,7 @@ body {
   font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
   color: $color;
   background: $background-color;
-  padding-top: 1rem;
+  padding-top: $padding;
 }
 
 img {
@@ -13,5 +13,17 @@ img {
 }
 
 .weather {
-  margin: 1rem;
+  margin: $margin;
+}
+
+.weather-button {
+  margin: $margin;
+  padding: $padding;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: $active-border;
+    outline: none;
+  }
 }

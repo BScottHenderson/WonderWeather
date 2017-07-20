@@ -8,4 +8,12 @@ $padding: 1rem;
 
 $margin: 1rem;
 
-$active-border: 0.25rem dashed green;
+$active-border: 0.1rem solid green;
+
+$cityImgMap: (
+  seattle: '../img/seattle.jpg',
+  london:  '../img/london.jpg',
+  oslo:    '../img/oslo.jpg',
+  rio:     '../img/rio.jpg',
+  bogota:  '../img/bogota.jpg'
+);

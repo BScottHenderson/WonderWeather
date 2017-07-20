@@ -2,7 +2,7 @@
 
 .weather-animation-container {
   color: $color;
-  background: gray;
+  background: $animation-background-color;
 }
 
 .weather-animation {
@@ -11,7 +11,7 @@
 	font-size: 3rem;
 	text-transform: uppercase;
 	letter-spacing: 2rem;
-	padding: 1rem;
+	padding: $padding;
 }
 
 /**************** SNOW! ****************/
@@ -40,7 +40,7 @@
 /**************** CLEAR SKY ****************/
 
 .sky {
-  background: #007fd5;
+  background: $sky-color;
   /*
   position: relative;
 	height: 480px;
@@ -53,16 +53,16 @@
 
 @keyframes sky_background {
   0% {
-    background: #007fd5;
-    color: #007fd5
+    background: $sky-color;
+    color: $sky-color;
   }
   50% {
     background: #000;
     color: #a3d9ff
   }
   100% {
-    background: #007fd5;
-    color: #007fd5
+    background: $sky-color;
+    color: $sky-color
   }
 }
 

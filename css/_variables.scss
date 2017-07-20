@@ -1,19 +1,11 @@
 $color: black;
 $background-color: white;
+$animation-background-color: gray;
 
-$black: #111;
-$pink: rgb(255, 192, 203);
+$sky-color: #007fd5;
 
-$margins: 0 2rem 2rem;
+$padding: 1rem;
 
-$note-box-size: 8rem;
+$margin: 1rem;
 
-$noteColorMap: (
-  c: (#db1d2d, #3e181b, #661920),
-  d: (#f0421c, #422018, #6e2819),
-  e: (#fec02d, #45391b, #fec02d),
-  f: (#20d071, #193c29, #1b613b),
-  g: (#1a9ddb, #18323e, #184d65),
-  a: (#a13fad, #331f35, #4e2753),
-  b: (#f26fd4, #43293d, #6f3a62)
-);
+$active-border: 0.25rem dashed green;

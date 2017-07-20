@@ -16,9 +16,14 @@ img {
   margin: $margin;
 }
 
-.weather-button {
+.city-weather-button {
+  width: 300px;
+  height: 300px;
+
   margin: $margin;
   padding: $padding;
+  border-radius: 2rem;
+  overflow: hidden;
 
   &:hover,
   &:active,
@@ -27,3 +32,32 @@ img {
     outline: none;
   }
 }
+
+.city-weather-button div {
+  font-size: 5rem;
+  color: blue;
+  opacity: 0.5;
+  padding-top: 200px;
+}
+
+button[name='seattle'] {
+  background: transparent url(map-get($cityImgMap, 'seattle')) no-repeat top;
+}
+button[name='london'] {
+  background: transparent url(map-get($cityImgMap, 'london')) no-repeat top;
+}
+button[name='oslo'] {
+  background: transparent url(map-get($cityImgMap, 'oslo')) no-repeat top;
+}
+button[name='rio'] {
+  background: transparent url(map-get($cityImgMap, 'rio')) no-repeat top;
+}
+button[name='bogota'] {
+  background: transparent url(map-get($cityImgMap, 'bogota')) no-repeat top;
+}
+
+// @each $city, $cityImg in $cityImgMap {
+//   button[name=#($city)] {
+//     background: transparent url(#($cityImg) no-repeat top;
+//   }
+// }

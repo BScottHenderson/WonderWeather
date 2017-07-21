@@ -28,19 +28,19 @@ img {
   opacity: 0.5;
   padding-top: 200px; }
 
-button[name='seattle'] {
-  background: transparent url("../img/seattle.jpg") no-repeat top; }
+button[name=seattle] {
+  background: transparent url(../img/seattle.jpg) no-repeat top; }
 
-button[name='london'] {
-  background: transparent url("../img/london.jpg") no-repeat top; }
+button[name=london] {
+  background: transparent url(../img/london.jpg) no-repeat top; }
 
-button[name='oslo'] {
-  background: transparent url("../img/oslo.jpg") no-repeat top; }
+button[name=oslo] {
+  background: transparent url(../img/oslo.jpg) no-repeat top; }
 
-button[name='rio'] {
-  background: transparent url("../img/rio.jpg") no-repeat top; }
+button[name=rio] {
+  background: transparent url(../img/rio.jpg) no-repeat top; }
 
-button[name='bogota'] {
-  background: transparent url("../img/bogota.jpg") no-repeat top; }
+button[name=bogota] {
+  background: transparent url(../img/bogota.jpg) no-repeat top; }
 
 /*# sourceMappingURL=weather.css.map */
